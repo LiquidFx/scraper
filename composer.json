@@ -1,4 +1,15 @@
 {
+	"name": "rubn-g/scraper",
+	"description": "Tool to scrape web contents",
+	"keywords": ["scrape","parse"],
+	"homepage": "http://github.com/rubn-g/scraper",
+	"authors": [
+		{
+			"name": "Rubén González",
+			"email": "ruben.gonzalezgomez@gmail.com",
+			"role": "CTO"
+		}
+	],
 	"require": {
 		"php": ">=5.3",
 		"rubn-g/multitask": "dev-master",
