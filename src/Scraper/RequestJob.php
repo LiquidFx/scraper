@@ -3,7 +3,7 @@
 namespace Scraper;
 
 use Multitask\Job;
-use Symfony\Component\DomCrawler\Crawler;
+use Net_Http_Client;
 
 class RequestJob extends Job {
 
@@ -14,14 +14,11 @@ class RequestJob extends Job {
 	}
 
 	public function run() {
-		$request = new HttpRequest($this->url);
-		$request->send();
+		$client = new Net_Http_Client();
+		$client->get($this->url);
 
-		if($request->getStatus() == 200) {
-			$crawler = new Crawler(null, $this->url);
-			$crawler->addContent($request->getContent());
-
-			return $crawler;
+		if($client->getStatus() == 200) {
+			return str_get_html($client->getBody());
 		}
 
 		return false;
