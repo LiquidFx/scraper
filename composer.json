@@ -13,7 +13,8 @@
 	"require": {
 		"php": ">=5.3",
 		"rubn-g/multitask": "dev-master",
-		"shark/simple_html_dom": "dev-master"
+		"symfony/dom-crawler": "2.3.*",
+		"symfony/css-selector": "2.3.*"
 	},
 	"autoload": {
 		"psr-0": {
