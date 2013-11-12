@@ -25,4 +25,8 @@ class Scraper {
 			$this->worker->add($job, $this->delay);
 		}
 	}
+
+	public function wait() {
+		$this->worker->wait();
+	}
 }
