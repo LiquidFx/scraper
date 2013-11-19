@@ -2,15 +2,17 @@
 
 namespace Scraper;
 
-use Multitask\Job;
 use Net_Http_Client;
+use Multitask\Job;
 
 class RequestJob extends Job {
 
 	protected $url;
+	protected $callback;
 
-	public function __construct($url) {
+	public function __construct($url, $callback) {
 		$this->url = $url;
+		$this->callback = $callback;
 	}
 
 	public function run() {
@@ -18,9 +20,7 @@ class RequestJob extends Job {
 		$client->get($this->url);
 
 		if($client->getStatus() == 200) {
-			return str_get_html($client->getBody());
+			$this->callback(str_get_html($client->getBody()));
 		}
-
-		return false;
 	}
 } 

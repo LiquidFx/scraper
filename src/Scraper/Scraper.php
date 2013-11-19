@@ -15,15 +15,8 @@ class Scraper {
 		$this->delay = $delay;
 	}
 
-	public function scrap($url, $callback) {
-		if(!isset($this->urls[$url])) {
-			$this->urls[$url] = 1;
-
-			$job = new RequestJob($url);
-			$job->once('success', $callback);
-
-			$this->worker->add($job, $this->delay);
-		}
+	public function add($url, $callback) {
+		$this->worker->add(new RequestJob($url, $callback), $this->delay);
 	}
 
 	public function wait() {
