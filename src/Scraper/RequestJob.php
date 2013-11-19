@@ -20,7 +20,7 @@ class RequestJob extends Job {
 		$client->get($this->url);
 
 		if($client->getStatus() == 200) {
-			$this->callback(str_get_html($client->getBody()));
+			call_user_func($this->callback, str_get_html($client->getBody()));
 		}
 	}
 } 
